@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>NumberToWords.Activities</id>
+    <version>1.0.0</version>
+    <title>NumberToWords</title>
+    <authors>mghextreme</authors>
+    <owners>mghextreme</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>UIPath Custom Activities to convert numbers into spelled words.</description>
+    <copyright>Copyright © 2019</copyright>
+    <license type="expression">Apache-2.0</license>
+    <projectUrl>https://mghextreme.github.io/uipath-number-to-words/</projectUrl>
+    <repository type="git" url="https://github.com/mghextreme/uipath-number-to-words" branch="master" />
+  </metadata>
+  <files>
+    <file src="Capgemini.Pipefy\bin\Release\net462\NumberToWords.dll" target="lib" />
+    <file src="Capgemini.Pipefy\bin\Release\net462\NumberToWords.xml" target="lib" />
+    <file src="Capgemini.Pipefy\bin\Release\net462\NumberToWords.Activities.dll" target="lib" />
+    <file src="Capgemini.Pipefy\bin\Release\net462\NumberToWords.Activities.xml" target="lib" />
+  </files>
+</package>
