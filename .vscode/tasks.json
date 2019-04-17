@@ -28,21 +28,6 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "increase build count",
-            "type": "shell",
-            "command": "powershell.exe",
-            "args": [
-                "-file",
-                "C:\\NugetPackages\\increase-version.ps1",
-                "*.nuspec",
-                "0.0.0.1"
-            ],
-            "presentation": {
-                "reveal": "silent"
-            },
-            "problemMatcher": "$msCompile"
-        },
-        {
             "dependsOn": [
                 "build (release)"
             ],
@@ -53,30 +38,6 @@
                 "pack",
                 "${workspaceFolder}"
             ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "dependsOn": [
-                "build (release)"
-            ],
-            "label": "pack (to folder)",
-            "command": "nuget",
-            "type": "process",
-            "args": [
-                "pack",
-                "${workspaceFolder}",
-                "-OutputDirectory",
-                "C:\\NugetPackages"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "dependsOn": [
-                "build (release)",
-                "increase build count",
-                "pack (to folder)"
-            ],
-            "label": "pack (complete)",
             "problemMatcher": "$msCompile"
         }
     ]

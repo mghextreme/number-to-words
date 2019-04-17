@@ -9,16 +9,31 @@ namespace NumberToWords
     /// </summary>
     public static class NumberConversor
     {
+        /// <summary>
+        /// Converts an integer number to words.
+        /// </summary>
+        /// <param name="number">The number</param>
+        /// <returns>Spelled version of the number</returns>
         public static string Convert(int number)
         {
             return Convert(number.ToString().ToCharArray());
         }
 
+        /// <summary>
+        /// Converts a long number to words.
+        /// </summary>
+        /// <param name="number">The number</param>
+        /// <returns>Spelled version of the number</returns>
         public static string Convert(long number)
         {
             return Convert(number.ToString().ToCharArray());
         }
 
+        /// <summary>
+        /// Converts an array of digit characters to words.
+        /// </summary>
+        /// <param name="number">The number</param>
+        /// <returns>Spelled version of the number</returns>
         public static string Convert(char[] number)
         {
             int len = number.Length;
