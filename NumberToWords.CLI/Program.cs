@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace NumberToWords.CLI
 {
@@ -6,21 +7,24 @@ namespace NumberToWords.CLI
     {
         static void Main(string[] args)
         {
-            Console.Write("Type a number: ");
-            bool success = false;
-            string spell = string.Empty;
-            while (!success)
+            bool exit = false;
+            while (!exit)
             {
-                string numberStr = Console.ReadLine();
-                if (long.TryParse(numberStr, out long number))
+                Console.Write("Type a number: ");
+                try
                 {
-                    spell = NumberConversor.Convert(number);
-                    success = true;
+                    string numberStr = Console.ReadLine();
+                    if (string.IsNullOrWhiteSpace(numberStr))
+                    {
+                        exit = true;
+                        break;
+                    }
+                    Console.WriteLine(NumberConversor.Convert(numberStr.ToCharArray()));
                 }
-                else
-                    Console.Write("Type a valid integer number: ");
+                catch (ArgumentException)
+                {
+                }
             }
-            Console.WriteLine(spell);
         }
     }
 }

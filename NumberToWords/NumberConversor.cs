@@ -25,7 +25,10 @@ namespace NumberToWords
                                                 "forty", "fifty", "sixty",
                                                 "seventy", "eighty", "ninety" };
 
-        private static string[] tens_power = new string[] { "", "thousand", "million", "billion", "trillion" };
+        private static string[] tens_power = new string[] { "", "thousand", "million",
+                                                            "billion", "trillion", "quadrillion",
+                                                            "quintillion", "sextillion", "septillion",
+                                                            "octillion", "nonillion", "decillion" };
 
         /// <summary>
         /// Converts an integer number to words.
@@ -59,6 +62,9 @@ namespace NumberToWords
             if (len == 0)
                 return string.Empty;
 
+            if (!number.All(char.IsDigit))
+                throw new ArgumentException("There are non supported characters in the string.");
+
             if (len == 1)
                 return single_digits[number[0] - '0'];
 
@@ -79,8 +85,15 @@ namespace NumberToWords
 
                 if (!string.IsNullOrWhiteSpace(part))
                 {
-                    int div = (int)Math.Floor((decimal)queue.Count / 3);
-                    result += part + " " + tens_power[div] + " ";
+                    try
+                    {
+                        int div = (int)Math.Floor((decimal)queue.Count / 3);
+                        result += part + " " + tens_power[div] + " ";
+                    }
+                    catch (IndexOutOfRangeException)
+                    {
+                        throw new ArgumentException("Number too large to spell.");
+                    }
                 }
             }
 
