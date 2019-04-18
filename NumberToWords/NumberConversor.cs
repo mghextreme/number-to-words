@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 // Based on the code by https://www.geeksforgeeks.org/convert-number-to-words/
 
@@ -9,6 +11,22 @@ namespace NumberToWords
     /// </summary>
     public static class NumberConversor
     {
+        private static string[] single_digits = new string[]{ "zero", "one", "two",
+                                                "three", "four", "five",
+                                                "six", "seven", "eight",
+                                                "nine" };
+
+        private static string[] two_digits = new string[]{ "", "ten", "eleven", "twelve",
+                                            "thirteen", "fourteen",
+                                            "fifteen", "sixteen", "seventeen",
+                                            "eighteen", "nineteen" };
+
+        private static string[] tens_multiple = new string[]{ "", "", "twenty", "thirty",
+                                                "forty", "fifty", "sixty",
+                                                "seventy", "eighty", "ninety" };
+
+        private static string[] tens_power = new string[] { "", "thousand", "million", "billion", "trillion" };
+
         /// <summary>
         /// Converts an integer number to words.
         /// </summary>
@@ -41,70 +59,77 @@ namespace NumberToWords
             if (len == 0)
                 return string.Empty;
 
-            string[] single_digits = new string[]{ "zero", "one", "two",
-                                                   "three", "four", "five",
-                                                   "six", "seven", "eight",
-                                                   "nine" };
-
-            string[] two_digits = new string[]{ "", "ten", "eleven", "twelve",
-                                                "thirteen", "fourteen",
-                                                "fifteen", "sixteen", "seventeen",
-                                                "eighteen", "nineteen" };
-
-            string[] tens_multiple = new string[]{ "", "", "twenty", "thirty",
-                                                   "forty", "fifty", "sixty",
-                                                   "seventy", "eighty", "ninety" };
-
-            string[] tens_power = new string[] { "hundred", "thousand" };
-
-            if (len == 1)
-                return single_digits[number[0] - '0'];
-
-            int x = 0;
             string result = string.Empty;
-            while (x < number.Length)
+            Queue<char> queue = new Queue<char>(),
+                        subqueue = new Queue<char>();
+
+            for (int i = 0; i < number.Length; i++)
+                queue.Enqueue(number[i]);
+
+            while (queue.Count > 0)
             {
-                if (len >= 3)
+                subqueue.Clear();
+                do { subqueue.Enqueue(queue.Dequeue()); }
+                while (queue.Count % 3 != 0);
+                result += ConvertThreeCharactersGroup(subqueue.ToArray());
+                int div = (int)Math.Floor((decimal)queue.Count / 3);
+                result += " " + tens_power[div] + " ";
+            }
+
+            return result.Replace("  ", " ").TrimEnd();
+        }
+
+        private static string ConvertThreeCharactersGroup(char[] number)
+        {
+            if (number.Length == 0)
+                return string.Empty;
+
+            if (number.Length > 3)
+                throw new ArgumentException("Maximum 3 characters supported.");
+
+            string result = string.Empty;
+
+            for (int inv, i = 0; i < number.Length; i++)
+            {
+                inv = number.Length - i - 1;
+                if (inv == 2)
                 {
-                    if (number[x] - '0' != 0)
-                    {
-                        result += single_digits[number[x] - '0'] + " ";
-                        result += tens_power[len - 3] + " ";
-                    }
-                    --len;
+                    if (number[i] - '0' != 0)
+                        result += single_digits[number[i] - '0'] + " hundred ";
                 }
-                else
+                else if (inv == 1)
                 {
-                    if (number[x] - '0' == 1)
+                    if (number[i] - '0' == 1)
                     {
-                        int sum = number[x] - '0' +
-                                  number[x + 1] - '0';
+                        int sum = number[i] - '0' +
+                                  number[i + 1] - '0';
                         result += two_digits[sum];
-                        break;
+                        i++;
                     }
-                    else if (number[x] - '0' == 2 &&
-                            number[x + 1] - '0' == 0)
+                    else if (number[i] - '0' == 2 &&
+                             number[i + 1] - '0' == 0)
                     {
                         result += tens_multiple[2];
-                        break;
+                        i++;
                     }
                     else
                     {
-                        int i = (number[x] - '0');
-                        if (i > 0)
-                            result += tens_multiple[i] + " ";
-                        ++x;
+                        if (number[i] - '0' != 0)
+                            result += tens_multiple[number[i] - '0'] + " ";
+                        i++;
 
-                        if (number[x] - '0' != 0)
-                        {
-                            result += single_digits[number[x] - '0'];
-                            break;
-                        }
+                        if (number[i] - '0' != 0)
+                            result += single_digits[number[i] - '0'];
                     }
                 }
-                ++x;
+                else
+                {
+                    if (number[i] - '0' != 0)
+                        result += single_digits[number[i] - '0'];
+                }
             }
-            return result.TrimEnd();
+
+            return result.Trim();
         }
     }
 }
