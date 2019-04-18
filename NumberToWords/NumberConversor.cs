@@ -59,7 +59,11 @@ namespace NumberToWords
             if (len == 0)
                 return string.Empty;
 
-            string result = string.Empty;
+            if (len == 1)
+                return single_digits[number[0] - '0'];
+
+            string result = string.Empty,
+                   part = string.Empty;
             Queue<char> queue = new Queue<char>(),
                         subqueue = new Queue<char>();
 
@@ -71,9 +75,13 @@ namespace NumberToWords
                 subqueue.Clear();
                 do { subqueue.Enqueue(queue.Dequeue()); }
                 while (queue.Count % 3 != 0);
-                result += ConvertThreeCharactersGroup(subqueue.ToArray());
-                int div = (int)Math.Floor((decimal)queue.Count / 3);
-                result += " " + tens_power[div] + " ";
+                part = ConvertThreeCharactersGroup(subqueue.ToArray());
+
+                if (!string.IsNullOrWhiteSpace(part))
+                {
+                    int div = (int)Math.Floor((decimal)queue.Count / 3);
+                    result += part + " " + tens_power[div] + " ";
+                }
             }
 
             return result.Replace("  ", " ").TrimEnd();

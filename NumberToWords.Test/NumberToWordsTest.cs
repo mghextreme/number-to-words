@@ -72,5 +72,31 @@ namespace NumberToWords.Test
         {
             Assert.AreEqual(expected, NumberConversor.Convert(number));
         }
+
+        [DataTestMethod]
+        [DataRow(1200, "one thousand two hundred")]
+        [DataRow(2008, "two thousand eight")]
+        [DataRow(3020, "three thousand twenty")]
+        [DataRow(4106, "four thousand one hundred six")]
+        [DataRow(5048, "five thousand forty eight")]
+        [DataRow(6000, "six thousand")]
+        [DataRow(7017, "seven thousand seventeen")]
+        [DataRow(8060, "eight thousand sixty")]
+        [DataRow(9999, "nine thousand nine hundred ninety nine")]
+        public void NumberConversor_Thousands(int number, string expected)
+        {
+            Assert.AreEqual(expected, NumberConversor.Convert(number));
+        }
+
+        [DataTestMethod]
+        [DataRow(1000000, "one million")]
+        [DataRow(2000004, "two million four")]
+        [DataRow(31000020, "thirty one million twenty")]
+        [DataRow(40000102, "forty million one hundred two")]
+        [DataRow(582019912, "five hundred eighty two million nineteen thousand nine hundred twelve")]
+        public void NumberConversor_Millions(long number, string expected)
+        {
+            Assert.AreEqual(expected, NumberConversor.Convert(number));
+        }
     }
 }
