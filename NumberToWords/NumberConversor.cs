@@ -37,7 +37,7 @@ namespace NumberToWords
         /// <returns>Spelled version of the number</returns>
         public static string Convert(int number)
         {
-            return Convert(number.ToString().ToCharArray());
+            return Convert(number.ToString());
         }
 
         /// <summary>
@@ -47,11 +47,21 @@ namespace NumberToWords
         /// <returns>Spelled version of the number</returns>
         public static string Convert(long number)
         {
-            return Convert(number.ToString().ToCharArray());
+            return Convert(number.ToString());
         }
 
         /// <summary>
-        /// Converts an array of digit characters to words.
+        /// Converts a string of digits characters to words.
+        /// </summary>
+        /// <param name="number">The number</param>
+        /// <returns>Spelled version of the number</returns>
+        public static string Convert(string number)
+        {
+            return Convert(number.ToCharArray());
+        }
+
+        /// <summary>
+        /// Converts an array of digits characters to words.
         /// </summary>
         /// <param name="number">The number</param>
         /// <returns>Spelled version of the number</returns>

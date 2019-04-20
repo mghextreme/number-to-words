@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberToWords.Test", "Numbe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberToWords.CLI", "NumberToWords.CLI\NumberToWords.CLI.csproj", "{66309FFB-D9C3-4C7C-B416-A2C689AFE946}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberToWords.Activities", "NumberToWords.Activities\NumberToWords.Activities.csproj", "{AF974ADA-3424-488C-810C-85BCC4C31FF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +60,17 @@ Global
 		{66309FFB-D9C3-4C7C-B416-A2C689AFE946}.Release|x64.Build.0 = Release|Any CPU
 		{66309FFB-D9C3-4C7C-B416-A2C689AFE946}.Release|x86.ActiveCfg = Release|Any CPU
 		{66309FFB-D9C3-4C7C-B416-A2C689AFE946}.Release|x86.Build.0 = Release|Any CPU
+		{AF974ADA-3424-488C-810C-85BCC4C31FF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF974ADA-3424-488C-810C-85BCC4C31FF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF974ADA-3424-488C-810C-85BCC4C31FF0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AF974ADA-3424-488C-810C-85BCC4C31FF0}.Debug|x64.Build.0 = Debug|Any CPU
+		{AF974ADA-3424-488C-810C-85BCC4C31FF0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AF974ADA-3424-488C-810C-85BCC4C31FF0}.Debug|x86.Build.0 = Debug|Any CPU
+		{AF974ADA-3424-488C-810C-85BCC4C31FF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF974ADA-3424-488C-810C-85BCC4C31FF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF974ADA-3424-488C-810C-85BCC4C31FF0}.Release|x64.ActiveCfg = Release|Any CPU
+		{AF974ADA-3424-488C-810C-85BCC4C31FF0}.Release|x64.Build.0 = Release|Any CPU
+		{AF974ADA-3424-488C-810C-85BCC4C31FF0}.Release|x86.ActiveCfg = Release|Any CPU
+		{AF974ADA-3424-488C-810C-85BCC4C31FF0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
