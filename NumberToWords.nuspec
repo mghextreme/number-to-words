@@ -14,9 +14,9 @@
     <repository type="git" url="https://github.com/mghextreme/uipath-number-to-words" branch="master" />
   </metadata>
   <files>
-    <file src="Capgemini.Pipefy\bin\Release\net462\NumberToWords.dll" target="lib" />
-    <file src="Capgemini.Pipefy\bin\Release\net462\NumberToWords.xml" target="lib" />
-    <file src="Capgemini.Pipefy\bin\Release\net462\NumberToWords.Activities.dll" target="lib" />
-    <file src="Capgemini.Pipefy\bin\Release\net462\NumberToWords.Activities.xml" target="lib" />
+    <file src="NumberToWords.Activities\bin\Release\net462\NumberToWords.dll" target="lib" />
+    <file src="NumberToWords.Activities\bin\Release\net462\NumberToWords.xml" target="lib" />
+    <file src="NumberToWords.Activities\bin\Release\net462\NumberToWords.Activities.dll" target="lib" />
+    <file src="NumberToWords.Activities\bin\Release\net462\NumberToWords.Activities.xml" target="lib" />
   </files>
 </package>

@@ -14,24 +14,24 @@ namespace NumberToWords.Activities
         [Description("The input number (Integer).")]
         [RequiredArgument]
         [OverloadGroup("Int")]
-        InArgument<int> IntNumber { get; set; }
+        public InArgument<int> IntNumber { get; set; }
 
         [Category("Input")]
         [Description("The input number (Long).")]
         [RequiredArgument]
         [OverloadGroup("Long")]
-        InArgument<long> LongNumber { get; set; }
+        public InArgument<long> LongNumber { get; set; }
 
         [Category("Input")]
         [Description("The input number (String).")]
         [RequiredArgument]
         [OverloadGroup("String")]
-        InArgument<string> StringNumber { get; set; }
+        public InArgument<string> StringNumber { get; set; }
 
         [Category("Output")]
         [Description("The spelled in number.")]
         [RequiredArgument]
-        OutArgument<string> SpelledInNumber { get; set; }
+        public OutArgument<string> SpelledInNumber { get; set; }
 
         protected override void Execute(CodeActivityContext context)
         {
